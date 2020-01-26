@@ -59,6 +59,15 @@ export class OscServer {
                     _this2.ccgChannel[channelIndex].layer[layerIndex].background.name = message.args[0];
                 }
                 if (message.address.includes('file/time')) {
+                    let prevPlaying = _this2.ccgChannel[channelIndex].layer[layerIndex].foreground.playing; 
+                    if (_this2.ccgChannel[channelIndex].layer[layerIndex].foreground.time === message.args[0]) {
+                        _this2.ccgChannel[channelIndex].layer[layerIndex].foreground.playing = false;
+                    } else {
+                        _this2.ccgChannel[channelIndex].layer[layerIndex].foreground.playing = true;
+                    }
+                    if (_this2.ccgChannel[channelIndex].layer[layerIndex].foreground.playing !== prevPlaying) {
+                        _this2.publishInfoUpdate(channelIndex);
+                    }
                     _this2.ccgChannel[channelIndex].layer[layerIndex].foreground.time = message.args[0];
                     _this2.ccgChannel[channelIndex].layer[layerIndex].foreground.length = message.args[1];
                 }

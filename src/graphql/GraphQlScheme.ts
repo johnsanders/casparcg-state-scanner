@@ -31,6 +31,7 @@ export const CCG_GQL_SCHEME = gql `
             length: Float
             loop: Boolean
             paused: Boolean
+            playing: Boolean
             producer: String
         }
         type Background {
@@ -38,6 +39,7 @@ export const CCG_GQL_SCHEME = gql `
             path: String
             length: Float
             loop: Boolean
+            playing: Boolean
             producer: String
         }
         type Timeleft {
